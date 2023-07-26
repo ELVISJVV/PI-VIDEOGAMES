@@ -7,21 +7,22 @@ const { Genre } = require('../db.js');
 
 
 const getGenres = async () => {
-    console.log(URL_API_GENRES);
+    
     let apiGenres = (await axios.get(`${URL_API_GENRES}?key=${API_KEY}`)).data.results;
 
-    // console.log(apiGenres);
-
-    apiGenres = apiGenres.map(genre => {
-        return {
-            id: genre.id,
-            name: genre.name
+    const genres = await Genre.findAll();
+    if ( genres.length === 0) {
+        apiGenres = apiGenres.map(genre => {
+            return {
+                id: genre.id,
+                name: genre.name
+            }
         }
+        )
+        createGeneres(apiGenres);
     }
-    )
 
-
-    createGeneres(apiGenres);
+    
     return apiGenres;
 
 
@@ -29,16 +30,13 @@ const getGenres = async () => {
 
 
 const createGeneres = async (array) => {
-
+    console.log(Genre);
     await array.map(genre =>  Genre.create({
         id: genre.id,
         name: genre.name
     }
         )
-    )
-
-
-    
+    ) 
         
 }
 

@@ -7,8 +7,8 @@ const clearArray = (array) =>
             description: videogame.description,
             released: videogame.released,
             rating: videogame.rating,
-            platforms: videogame.platforms,
-            genres: videogame.genres,
+            platforms: videogame.platforms.map(platform => platform.platform.name),
+            genres: videogame.genres.map(genre => genre.name),
             image: videogame.background_image,
             created: false
 

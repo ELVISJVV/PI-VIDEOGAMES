@@ -4,7 +4,7 @@ const { getVideogames } = require('../controllers/videogamesControllers.js');
 
 const getVideogamesHandler = async (req, res) => {
     try {
-        const videogames = await videogamesService.getVideogames();
+        const videogames = await getVideogames();
         res.status(200).json(videogames);
     } catch (error) {
         res.status(500).json(error.message);
