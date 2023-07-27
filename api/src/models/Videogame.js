@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
   
-    release_date:{
+    released:{
       type: DataTypes.DATE,
       allowNull: false
     },
@@ -34,12 +34,13 @@ module.exports = (sequelize) => {
     
     },
     rating:{
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       allowNull: false
     },
     genres:{
       type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false
+      // allowNull: false
+      
     },
     created: {
       type: DataTypes.BOOLEAN,

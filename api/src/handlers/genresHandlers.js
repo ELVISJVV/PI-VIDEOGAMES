@@ -1,4 +1,4 @@
-const { getGenres } = require('../controllers/genresControllers.js');
+const { getGenres } = require('../controllers/Genres/getGenres.js');
 
 
 const genresHandler = async (req, res) => {
@@ -12,6 +12,6 @@ const genresHandler = async (req, res) => {
     }
 }
 
-module.exports ={
+module.exports = {
     genresHandler
 }

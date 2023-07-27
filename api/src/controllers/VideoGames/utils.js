@@ -1,5 +1,5 @@
 
-const clearArray = (array) =>
+const cleanArray = (array) =>
     array.map(videogame => {
         return {
             id: videogame.id,
@@ -18,5 +18,5 @@ const clearArray = (array) =>
 
 
 module.exports = {
-    clearArray
+    cleanArray
 }

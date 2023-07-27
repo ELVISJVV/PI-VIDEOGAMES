@@ -1,5 +1,6 @@
 
-const { getVideogames } = require('../controllers/videogamesControllers.js');
+const { getVideogames } = require('../controllers/VideoGames/getAllGames.js');
+const {postVideogame} = require('../controllers/VideoGames/postGame.js');
 
 
 const getVideogamesHandler = async (req, res) => {
@@ -12,7 +13,22 @@ const getVideogamesHandler = async (req, res) => {
 }
 
 
+const postVideogameHandler = async (req, res) => {
+    try {
+        const { name, description, platforms, image, released,rating,genres } = req.body;
+
+        res.status(201).json(await postVideogame(name, description, platforms, image, released,rating,genres));
+
+    } catch (error) {
+        res.status(500).json(error.message);
+    }
+}
+
+
+
+
 module.exports = {
-    getVideogamesHandler
+    getVideogamesHandler,
+    postVideogameHandler
 
 }

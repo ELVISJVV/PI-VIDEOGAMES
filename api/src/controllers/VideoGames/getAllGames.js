@@ -1,8 +1,8 @@
 require('dotenv').config();
 const { API_KEY, BASE_URL } = process.env;
 const axios = require('axios');
-const {clearArray} = require('./utils.js');
-const { Videogame,Genre } = require('../db.js');
+const { cleanArray } = require('./utils.js');
+const { Videogame } = require('../../db.js');
 
 
 const getVideogames = async () => {
@@ -15,11 +15,11 @@ const getVideogames = async () => {
         games = [...games, ...apiVideogames]
         i++
     }
-    
 
 
-    const videogames = clearArray(games);
-    
+
+    const videogames = cleanArray(games);
+
     return [...databaseVideogames, ...videogames]
 
 }
