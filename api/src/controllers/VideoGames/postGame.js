@@ -25,8 +25,6 @@ const postVideogame = async (name, description, platforms, image, released,ratin
 
     await newVideogame.addGenre(genres)
 
-    // await newVideogame.addGenres(genres);
-    console.log(newVideogame);
     return newVideogame;
 }
 

@@ -17,6 +17,27 @@ const cleanArray = (array) =>
     )
 
 
+const cleanArrayDatabase = (array) =>
+    array.map(videogame => {
+        return {
+            id: videogame.id,
+            name: videogame.name,
+            description: videogame.description,
+            released: videogame.released,
+            rating: videogame.rating,
+            // platforms: videogame.platforms.map(platform => platform.platform.name),
+            platforms: videogame.platforms,
+            genres: videogame.Genres.map(genre => genre.name),
+            image: videogame.background_image,
+            created: false
+
+        }
+    }
+    )
+
+
+
 module.exports = {
-    cleanArray
+    cleanArray,
+    cleanArrayDatabase
 }
