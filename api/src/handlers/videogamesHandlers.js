@@ -1,7 +1,7 @@
 
 const { getVideogames } = require('../controllers/VideoGames/getAllGames.js');
 const {postVideogame} = require('../controllers/VideoGames/postGame.js');
-
+const { getVideogamesById } = require('../controllers/VideoGames/getGameById.js');
 
 const getVideogamesHandler = async (req, res) => {
     try {
@@ -25,10 +25,27 @@ const postVideogameHandler = async (req, res) => {
 }
 
 
+const getVideogameByIdHandler = async (req, res) => {
+    
 
+        try {
+            const { id } = req.params;
+
+            const source = isNaN(id) ? "bdd" : "api";
+
+            const game = await getVideogamesById(id, source);
+            
+            res.status(200).json(game);
+        } catch (error) {
+            res.status(404).send(error.message);
+        }
+    
+
+}
 
 module.exports = {
     getVideogamesHandler,
-    postVideogameHandler
+    postVideogameHandler,
+    getVideogameByIdHandler
 
 }

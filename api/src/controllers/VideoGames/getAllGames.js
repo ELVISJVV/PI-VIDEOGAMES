@@ -43,6 +43,8 @@ const getVideogames = async () => {
         apiPromises.push(axios.get(`${BASE_URL}?key=${API_KEY}&page=${i}`));
     }
 
+    
+
     try {
         const apiResponses = await Promise.all(apiPromises);
         apiResponses.forEach((response) => {
