@@ -2,6 +2,7 @@
 const { getVideogames } = require('../controllers/VideoGames/getAllGames.js');
 const {postVideogame} = require('../controllers/VideoGames/postGame.js');
 const { getVideogamesById } = require('../controllers/VideoGames/getGameById.js');
+const { getVideogamesByName } = require('../controllers/VideoGames/getGamesByName.js');
 
 const getVideogamesHandler = async (req, res) => {
     try {
@@ -43,9 +44,26 @@ const getVideogameByIdHandler = async (req, res) => {
 
 }
 
+const getVideogamesByNameHandler = async (req, res) => {
+    
+    try {
+        const { name } = req.query;
+        
+        
+
+        const games = await getVideogamesByName(name);
+
+        res.status(200).json(games);
+    } catch (error) {
+        
+        res.status(500).json(error.message);
+    }
+}
+
 module.exports = {
     getVideogamesHandler,
     postVideogameHandler,
-    getVideogameByIdHandler
+    getVideogameByIdHandler,
+    getVideogamesByNameHandler
 
 }
