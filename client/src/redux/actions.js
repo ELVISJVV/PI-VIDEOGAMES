@@ -69,3 +69,43 @@ export const getGenres = () => {
         }
     
 }
+
+export const getVideogamesByName = (name) => {
+    
+        return async (dispatch) => {
+            try {
+                const response = await axios.get(`http://localhost:3001/videogames?name=${name}`);
+                const videogames = response.data;
+    
+                dispatch({
+                    type: GET_VIDEOGAMES_BY_NAME,
+                    payload: videogames
+                })
+    
+            } catch (error) {
+                console.error('Error al obtener los videojuegos:', error);
+            }
+    
+        }
+    
+}
+
+export const postVideogame = (videogame) => {
+        
+            return async (dispatch) => {
+                try {
+                    const response = await axios.post('http://localhost:3001/videogames', videogame);
+                    
+
+                    dispatch({
+                        type: POST_VIDEOGAME,
+                        payload: response.data
+                    })
+
+                } catch (error) {
+                    console.error('Error al crear el videojuego:', error);
+                    
+                }
+        
+            }
+}
