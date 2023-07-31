@@ -25,7 +25,7 @@ const getVideogamesById = async (id,source) => {
 
 
 
-    return [...videogame];
+    return videogame[0];
 }
 
 
