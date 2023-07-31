@@ -8,29 +8,43 @@ const { Genre } = require('../../db.js');
 
 const getGenres = async () => {
 
-    let apiGenres = (await axios.get(`${URL_API_GENRES}?key=${API_KEY}`)).data.results;
+    
+    const apiGenres = (await axios.get(`${URL_API_GENRES}?key=${API_KEY}`)).data.results;
 
-    const genres = await Genre.findAll();
-    if (genres.length === 0) {
-        apiGenres = apiGenres.map(genre => {
+    const genresInDB = await Genre.findAll();
+    
+    const newGenres = apiGenres.filter((apiGenre) => {
+        return !genresInDB.some((dbGenre) => dbGenre.id === apiGenre.id);
+    });
+
+    const missingGenres = genresInDB.filter((dbGenre) => {
+        return !apiGenres.some((apiGenre) => apiGenre.id === dbGenre.id);
+    });
+
+    if (newGenres.length > 0) {
+        const newGenres = apiGenres.map(genre => {
             return {
                 id: genre.id,
                 name: genre.name
             }
-        }
-        )
-        createGeneres(apiGenres);
+        })
+        createGenres(newGenres);
+
+    }
+    if (missingGenres.length > 0) {
+        deleteGenres(missingGenres); 
     }
 
-
-    return apiGenres;
+    const allGenres = [...genresInDB, ...apiGenres];
+    return allGenres;
 
 
 }
 
 
-const createGeneres = async (array) => {
-    console.log(Genre);
+
+const createGenres = async (array) => {
+  
     await array.map(genre => Genre.create({
         id: genre.id,
         name: genre.name
@@ -40,6 +54,15 @@ const createGeneres = async (array) => {
 
 }
 
+const deleteGenres = async (array) => {
+    await array.map(genre => Genre.destroy({
+        where: {
+            id: genre.id
+        }
+    }
+    )
+    )
+}
 
 
 module.exports = {

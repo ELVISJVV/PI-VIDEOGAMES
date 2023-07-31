@@ -15,3 +15,8 @@ const genresHandler = async (req, res) => {
 module.exports = {
     genresHandler
 }
+
+
+
+
+
