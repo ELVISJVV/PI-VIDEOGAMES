@@ -12,10 +12,10 @@ const getVideogamesByName = async (name) => {
         where: { name: { [Op.iLike]: `%${name}%` } },
         include: Genre,
     });
-    
+
     let apiVideogames = (await axios.get(`${BASE_URL}?key=${API_KEY}&search=${name}`)).data.results;
 
-    databaseVideogames =cleanArrayDatabase(databaseVideogames);
+    databaseVideogames = cleanArrayDatabase(databaseVideogames);
 
     apiVideogames = cleanArray(apiVideogames);
 
@@ -23,10 +23,10 @@ const getVideogamesByName = async (name) => {
 
     if (games.length === 0) throw new Error('No se encontraron coincidencias');
 
-    return games.slice(0,15);
+    return games.slice(0, 15);
 }
 
 module.exports = {
-    getVideogamesByName,
+    getVideogamesByName
 
 }

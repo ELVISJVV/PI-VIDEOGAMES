@@ -2,7 +2,7 @@ require('dotenv').config();
 const { API_KEY, BASE_URL } = process.env;
 const axios = require('axios');
 const { cleanArray, cleanArrayDatabase } = require('./utils.js');
-const { Videogame,Genre } = require('../../db.js');
+const { Videogame, Genre } = require('../../db.js');
 
 
 // unoptimized code
@@ -43,7 +43,7 @@ const getVideogames = async () => {
         apiPromises.push(axios.get(`${BASE_URL}?key=${API_KEY}&page=${i}`));
     }
 
-    
+
 
     try {
         const apiResponses = await Promise.all(apiPromises);
