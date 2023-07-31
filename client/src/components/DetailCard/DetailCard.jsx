@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 const DetailCard = () => {
     
     const videogameDetail = useSelector(state => state.videogameDetail)
-    console.log(videogameDetail);
+    // console.log(videogameDetail);
   return (
     <div>
-    <h2>hola</h2>
+    
         <h1>{videogameDetail.name}</h1>
         <img src={videogameDetail.image} alt="img not found"/>
         

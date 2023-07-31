@@ -6,7 +6,7 @@ import Cards from '../Cards/Cards';
 const PaginatedList = () => {
     const videogames = useSelector(state => state.videogames)
     const data = videogames
-    const itemsPerPage = 12;
+    const itemsPerPage = 15;
     const [currentPage, setCurrentPage] = useState(1);
     const totalPages = Math.ceil(data.length / itemsPerPage);
 
@@ -30,23 +30,18 @@ const PaginatedList = () => {
 
     useEffect(() => {
         const paginatedData = getPaginatedData();
-        console.log(paginatedData);
+        // console.log(paginatedData);
     }, [currentPage, data]);
 
     return (
         <div>
-            {/* <ul>
-                {getPaginatedData().map((item, index) => (
-                    <li key={index}>{item}</li>
-                ))}
-            </ul> */}
-<Cards videogames={getPaginatedData()}/>
+
+            <Cards videogames={getPaginatedData()} />
             <div>
                 <button onClick={handlePrevPage} disabled={currentPage === 1}>
                     Anterior
                 </button>
 
-                {/* Botones con números de paginado */}
                 {Array.from({ length: totalPages }, (_, index) => (
                     <button
                         key={index}
