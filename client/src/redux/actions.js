@@ -8,7 +8,8 @@ import {
     FILTER_BY_ORIGIN,
     SORT_BY_NAME,
     SORT_BY_RATING,
-    RESET_FILTERS
+    RESET_FILTERS,
+    REFRESH_GAMES
 } from "./actionTypes";
 import axios from "axios";
 
@@ -156,5 +157,11 @@ export const sortByRating = (order) => {
 export const resetFilters = () => {
     return {
         type: RESET_FILTERS
+    }
+}
+
+export const refreshGames = () => {
+    return {
+        type: REFRESH_GAMES
     }
 }

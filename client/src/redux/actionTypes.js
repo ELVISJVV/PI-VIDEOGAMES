@@ -8,3 +8,4 @@ export const FILTER_BY_ORIGIN = 'FILTER_BY_ORIGIN';
 export const SORT_BY_NAME = 'SORT_BY_NAME';
 export const SORT_BY_RATING = 'SORT_BY_RATING';
 export const RESET_FILTERS = 'RESET_FILTERS';
+export const REFRESH_GAMES = 'REFRESH_GAMES';

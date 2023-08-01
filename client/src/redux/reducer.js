@@ -8,7 +8,8 @@ import {
     FILTER_BY_ORIGIN,
     SORT_BY_NAME,
     SORT_BY_RATING,
-    RESET_FILTERS
+    RESET_FILTERS,
+    REFRESH_GAMES
 } from "./actionTypes";
 
 const initialState = {
@@ -134,6 +135,11 @@ const reducer = (state = initialState, action) => {
                 sortedByRating: []
             }
 
+        case REFRESH_GAMES:
+            return {
+                ...state,
+                videogames: state.allVideogames
+            }
 
         default:
             return state;
