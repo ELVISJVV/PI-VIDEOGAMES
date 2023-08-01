@@ -28,8 +28,8 @@ const cleanArrayDatabase = (array) =>
             // platforms: videogame.platforms.map(platform => platform.platform.name),
             platforms: videogame.platforms,
             genres: videogame.Genres.map(genre => genre.name),
-            image: videogame.background_image,
-            created: false
+            image: videogame.image,
+            created: true
 
         }
     }
