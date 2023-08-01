@@ -5,6 +5,7 @@ import PaginatedList from './PaginatedList/PaginatedList'
 import Landing from './Landing/Landing'
 import Navbar from './NavBar/NavBar'
 import SideBar from './SideBar/SideBar' 
+import NotFound from './NotFound/NotFound'
 
 export{
     Cards,
@@ -13,6 +14,7 @@ export{
     PaginatedList,
     Landing,
     Navbar,
-    SideBar
+    SideBar,
+    NotFound
 
 }

@@ -26,7 +26,7 @@ export const getVideogames = () => {
             })
 
         } catch (error) {
-            console.error('Error al obtener los videojuegos:', error);
+            console.error('Error getting the video games:', error);
         }
 
     }
@@ -48,7 +48,7 @@ export const getVideogameById = (id) => {
             })
 
         } catch (error) {
-            console.error('Error al obtener el videojuego:', error);
+            console.error('Error getting game: ', error);
         }
 
     }
@@ -68,7 +68,7 @@ export const getGenres = () => {
             })
 
         } catch (error) {
-            console.error('Error al obtener los generos:', error);
+            console.error('Error getting the genres:', error);
         }
 
     }
@@ -81,14 +81,19 @@ export const getVideogamesByName = (name) => {
         try {
             const response = await axios.get(`http://localhost:3001/videogames?name=${name}`);
             const videogames = response.data;
-
+            console.log(response.error);
             dispatch({
                 type: GET_VIDEOGAMES_BY_NAME,
                 payload: videogames
             })
 
         } catch (error) {
-            console.error('Error al obtener los videojuegos:', error);
+            
+            dispatch({
+                type: GET_VIDEOGAMES_BY_NAME,
+                payload: []
+            })
+            // console.error('Error getting the video games:', error);
         }
 
     }
@@ -108,7 +113,11 @@ export const postVideogame = (videogame) => {
             })
 
         } catch (error) {
-            console.error('Error al crear el videojuego:', error);
+            dispatch({
+                type: POST_VIDEOGAME,
+                payload: {}
+            })
+            console.error('Error creating the game:', error);
 
         }
 

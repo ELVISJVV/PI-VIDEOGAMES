@@ -1,0 +1,15 @@
+.not_found_container {
+    text-align: center;
+    margin: 50px auto;
+}
+
+.not_found_gif {
+    width: 300px;
+    height: 300px;
+}
+
+.not_found_text{
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}

@@ -21,7 +21,7 @@ const initialState = {
     filteredByGenre: [],
     filteredByOrigin: [],
     sortedByName: [],
-    sortedByRating: []
+    sortedByRating: [],
 };
 
 
@@ -60,18 +60,36 @@ const reducer = (state = initialState, action) => {
             }
 
         case FILTER_BY_GENRE:
-            return {
-                ...state,
-                videogames: action.payload,
-                filteredByGenre: action.payload
+            if (action.payload === 'default') {
+                
+                return {
+                    ...state,
+                    videogames: state.videogames,
+                    filteredByGenre: []
+                };
+            } else {
+               
+                const filteredByGenre = state.videogames.filter(game => game.genres.includes(action.payload));
+                
+                return {
+                    ...state,
+                    videogames: filteredByGenre,
+                    filteredByGenre: filteredByGenre
+                };
             }
 
         case FILTER_BY_ORIGIN:
+            let filteredByOrigin = [];
+            if (action.payload === "created") {
+                filteredByOrigin = state.videogames.filter((game) => game.created);
+            } else if (action.payload === "api") {
+                filteredByOrigin = state.videogames.filter((game) => !game.created);
+            }
             return {
                 ...state,
-                videogames: action.payload,
-                filteredByOrigin: action.payload
-            }
+                videogames: filteredByOrigin
+            };
+
 
         case SORT_BY_NAME:
 

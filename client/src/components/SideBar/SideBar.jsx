@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from "react-redux";
-import { 
+import {
     getGenres,
     filterByGenre,
     filterByOrigin,
@@ -9,6 +9,7 @@ import {
     resetFilters
 } from '../../redux/actions';
 import { useEffect, useState } from 'react';
+import style from './SideBar.module.css'
 
 const SideBar = () => {
     const dispatch = useDispatch()
@@ -23,21 +24,10 @@ const SideBar = () => {
 
     const [filters, setFilters] = useState(defaultFilters);
 
+
     useEffect(() => {
         dispatch(getGenres())
     }, [dispatch])
-
-    // useEffect(() => {
-    //     // dispatch(filterByGenre(filters.genre))
-    //     // dispatch(filterByOrigin(filters.origin))
-    //     // dispatch(sortByName(filters.orderBy))
-    //     dispatch(sortByRating(filters.rating))
-    // }, [
-    //     // filters.genre, filters.origin, filters.orderBy,
-    //      filters.rating, dispatch]);
-
-
-   
 
 
     const handleFilterChange = (event) => {
@@ -61,20 +51,20 @@ const SideBar = () => {
         if (event.target.name === 'rating') {
 
             dispatch(sortByRating(event.target.value))
-            console.log('hi');
-            console.log(videogames);
-
         }
 
     };
+
+
 
     const handleResetFilters = () => {
         setFilters(defaultFilters);
         dispatch(resetFilters())
     };
 
+
     return (
-        <div >
+        <div className={style.SideBar}>
 
             <h2>Filters</h2>
 

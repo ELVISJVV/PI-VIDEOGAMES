@@ -1,5 +1,5 @@
 import React from 'react'
-import { Loading,PaginatedList,Navbar,SideBar } from '../../components'
+import { Loading,PaginatedList,Navbar,SideBar} from '../../components'
 import { useEffect, useState } from 'react'; import { useDispatch } from 'react-redux';
 import { getVideogames } from '../../redux/actions';
 

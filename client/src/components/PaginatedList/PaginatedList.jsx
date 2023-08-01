@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import Cards from '../Cards/Cards';
-import {  Navbar, SideBar } from '../index'
+import {  Navbar, SideBar,NotFound } from '../index'
 
 
 const PaginatedList = () => {
@@ -30,7 +30,7 @@ const PaginatedList = () => {
         return data.slice(startIndex, endIndex);
     };
 
-    
+    if (!data.length) return <NotFound/>;
 
     return (
 
