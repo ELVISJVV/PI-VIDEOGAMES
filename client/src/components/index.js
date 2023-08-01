@@ -3,12 +3,16 @@ import DetailCard from './DetailCard/DetailCard'
 import Loading from './Loading/Loading'
 import PaginatedList from './PaginatedList/PaginatedList'
 import Landing from './Landing/Landing'
+import Navbar from './NavBar/NavBar'
+import SideBar from './SideBar/SideBar' 
 
 export{
     Cards,
     DetailCard,
     Loading,
     PaginatedList,
-    Landing
+    Landing,
+    Navbar,
+    SideBar
 
 }

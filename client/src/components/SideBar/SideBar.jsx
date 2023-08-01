@@ -1,0 +1,132 @@
+import React from 'react'
+import { useSelector, useDispatch } from "react-redux";
+import { 
+    getGenres,
+    filterByGenre,
+    filterByOrigin,
+    sortByName,
+    sortByRating,
+    resetFilters
+} from '../../redux/actions';
+import { useEffect, useState } from 'react';
+
+const SideBar = () => {
+    const dispatch = useDispatch()
+    const defaultFilters = {
+        orderBy: 'default',
+        rating: 'default',
+        genre: 'default',
+        origin: 'default'
+    };
+    const genres = useSelector(state => state.genres)
+    const videogames = useSelector(state => state.videogames)
+
+    const [filters, setFilters] = useState(defaultFilters);
+
+    useEffect(() => {
+        dispatch(getGenres())
+    }, [dispatch])
+
+    // useEffect(() => {
+    //     // dispatch(filterByGenre(filters.genre))
+    //     // dispatch(filterByOrigin(filters.origin))
+    //     // dispatch(sortByName(filters.orderBy))
+    //     dispatch(sortByRating(filters.rating))
+    // }, [
+    //     // filters.genre, filters.origin, filters.orderBy,
+    //      filters.rating, dispatch]);
+
+
+   
+
+
+    const handleFilterChange = (event) => {
+        setFilters(prevFilters => ({
+            ...prevFilters,
+            [event.target.name]: event.target.value
+        }));
+
+        if (event.target.name === 'genre') {
+            dispatch(filterByGenre(event.target.value))
+        }
+
+        if (event.target.name === 'origin') {
+            dispatch(filterByOrigin(event.target.value))
+        }
+
+        if (event.target.name === 'orderBy') {
+            dispatch(sortByName(event.target.value))
+        }
+
+        if (event.target.name === 'rating') {
+
+            dispatch(sortByRating(event.target.value))
+            console.log('hi');
+            console.log(videogames);
+
+        }
+
+    };
+
+    const handleResetFilters = () => {
+        setFilters(defaultFilters);
+        dispatch(resetFilters())
+    };
+
+    return (
+        <div >
+
+            <h2>Filters</h2>
+
+            <select
+                name='orderBy'
+                value={filters.orderBy}
+                onChange={handleFilterChange}
+            >
+                <option disabled value="default">  A-Z / Z-A  </option>
+                <option value="ascendingName">   Name A/Z   </option>
+                <option value="descendingName"> Name Z/A </option>
+            </select>
+
+
+            <select
+                name='rating'
+                value={filters.rating}
+                onChange={handleFilterChange}
+            >
+                <option disabled value="default">Rating</option>
+
+                <option value="ascendingRating">Rating ↑ </option>
+                <option value="descendingRating">Rating ↓ </option>
+            </select>
+
+
+            <select
+                name='genre'
+                value={filters.genre}
+                onChange={handleFilterChange}
+            >
+                <option disabled value="default">Filter by Genre</option>
+                {genres && genres.map(genre => {
+                    return (
+                        <option key={genre.id} value={genre.name}>{genre.name}</option>
+                    )
+                })}
+            </select>
+
+            <select
+                name='origin'
+                value={filters.origin}
+                onChange={handleFilterChange}
+            >
+                <option disabled value="default">Filter by Origin</option>
+                <option value="api">Api</option>
+                <option value="created">Created</option>
+            </select>
+
+            <button onClick={handleResetFilters}>Reset Filters</button>
+        </div>
+    )
+}
+
+export default SideBar

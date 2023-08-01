@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import Cards from '../Cards/Cards';
+import {  Navbar, SideBar } from '../index'
 
 
 const PaginatedList = () => {
     const videogames = useSelector(state => state.videogames)
+    
     const data = videogames
     const itemsPerPage = 15;
     const [currentPage, setCurrentPage] = useState(1);
@@ -28,14 +30,11 @@ const PaginatedList = () => {
         return data.slice(startIndex, endIndex);
     };
 
-    useEffect(() => {
-        const paginatedData = getPaginatedData();
-        // console.log(paginatedData);
-    }, [currentPage, data]);
+    
 
     return (
-        <div>
 
+        <div>
             <Cards videogames={getPaginatedData()} />
             <div>
                 <button onClick={handlePrevPage} disabled={currentPage === 1}>
