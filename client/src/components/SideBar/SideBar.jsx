@@ -20,7 +20,6 @@ const SideBar = () => {
         origin: 'default'
     };
     const genres = useSelector(state => state.genres)
-    const videogames = useSelector(state => state.videogames)
 
     const [filters, setFilters] = useState(defaultFilters);
 

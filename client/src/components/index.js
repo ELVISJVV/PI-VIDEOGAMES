@@ -6,6 +6,7 @@ import Landing from './Landing/Landing'
 import Navbar from './NavBar/NavBar'
 import SideBar from './SideBar/SideBar' 
 import NotFound from './NotFound/NotFound'
+import GameForm from './GameForm/GameForm'
 
 export{
     Cards,
@@ -15,6 +16,7 @@ export{
     Landing,
     Navbar,
     SideBar,
-    NotFound
+    NotFound,
+    GameForm
 
 }

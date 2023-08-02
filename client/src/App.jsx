@@ -1,6 +1,6 @@
 
 // import './App.css'
-import {LandingPage,Home,Detail,NotFound} from './views/index.js'
+import {LandingPage,Home,Detail,NotFound,Create} from './views/index.js'
 import { Route, Routes } from 'react-router-dom';
 
 
@@ -13,6 +13,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="*" element={<NotFound/>} />
+        <Route path="/create" element={<Create />} />
 
       </Routes>
 

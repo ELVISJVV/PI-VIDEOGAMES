@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
-import { getVideogamesByName } from '../../redux/actions';
+import { getVideogamesByName,refreshGames } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 
 const Navbar = () => {
     const [searchText, setSearchText] = useState('');
     const dispatch = useDispatch();
 
+    const videogames = useSelector(state => state.videogames)
 
-    // useEffect(() => {
-    //     dispatch(getVideogamesByName(searchText))
-    // }, [searchText]);
+
 
 
     const handleSearch = (event) => {
@@ -22,16 +23,21 @@ const Navbar = () => {
         dispatch(getVideogamesByName(searchText))
     };
 
+    const handleAllGames = () => {
+        dispatch(refreshGames())
+    }
     return (
         <nav className="navbar">
 
             <div className="searchbar">
                 <input type="text" value={searchText} onChange={handleSearch} />
-                <button placeholder='Enter name of game' onClick={handleSearchSubmit}>Buscar</button>
+                <button  onClick={handleSearchSubmit}>Buscar</button>
+                <button onClick={handleAllGames}>All the games</button>
             </div>
 
             <nav>
-                <button>Create Game</button>
+                
+                <Link to={`/create`}><button>Create Game</button></Link>
             </nav>
         </nav>
     );
