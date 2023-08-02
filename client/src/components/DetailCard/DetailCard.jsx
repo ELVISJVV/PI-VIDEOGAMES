@@ -7,7 +7,10 @@ const DetailCard = () => {
   const videogameDetail = useSelector(state => state.videogameDetail);
 
   return (
-    <div className={style.container}>
+    <div className={style.detailcontainer}>
+
+    
+    <div className={style.containerDetail}>
       <h1 className={style.title}>{videogameDetail.name}</h1>
       <img src={videogameDetail.image} alt="Image not found" className={style.image} />
 
@@ -35,6 +38,7 @@ const DetailCard = () => {
       <Link to={`/home`} className={style.backButton}>
         <button className={style.button}>Back</button>
       </Link>
+    </div>
     </div>
   )
 }

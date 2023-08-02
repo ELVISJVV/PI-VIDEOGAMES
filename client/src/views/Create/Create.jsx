@@ -1,10 +1,10 @@
 import React from 'react'
 import { GameForm } from '../../components'
-
+import style from './Create.module.css'
 
 const Create = () => {
     return (
-        <div>
+        <div className={style.createForm}>
             <GameForm />
         </div>
     )

@@ -19,6 +19,7 @@ const initialState = {
     genres: [],
     videogamesByName: [],
     videogameCreated: {},
+    
    
 };
 
@@ -48,7 +49,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 videogames: action.payload,
-                allVideogames: action.payload,
                 videogamesByName: action.payload
             }
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import Cards from '../Cards/Cards';
 import {  Navbar, SideBar,NotFound } from '../index'
-
+import style from './PaginatedList.module.css'
 
 const PaginatedList = () => {
     const videogames = useSelector(state => state.videogames)
@@ -34,9 +34,14 @@ const PaginatedList = () => {
 
     return (
 
-        <div>
-            <Cards videogames={getPaginatedData()} />
+        <div className={style.containerPaginate}>
+            
             <div>
+                
+            <Cards videogames={getPaginatedData()} />
+            </div>
+
+            <div className={style.pagination}>
                 <button onClick={handlePrevPage} disabled={currentPage === 1}>
                     Anterior
                 </button>

@@ -63,7 +63,7 @@ const SideBar = () => {
 
 
     return (
-        <div className={style.SideBar}>
+        <div className={style.filtersContainer}>
 
             <h2>Filters</h2>
 
@@ -71,6 +71,7 @@ const SideBar = () => {
                 name='orderBy'
                 value={filters.orderBy}
                 onChange={handleFilterChange}
+                className={style.filterSelect}
             >
                 <option disabled value="default">  A-Z / Z-A  </option>
                 <option value="ascendingName">   Name A/Z   </option>
@@ -82,6 +83,7 @@ const SideBar = () => {
                 name='rating'
                 value={filters.rating}
                 onChange={handleFilterChange}
+                className={style.filterSelect}
             >
                 <option disabled value="default">Rating</option>
 
@@ -94,6 +96,7 @@ const SideBar = () => {
                 name='genre'
                 value={filters.genre}
                 onChange={handleFilterChange}
+                className={style.filterSelect}
             >
                 <option disabled value="default">Filter by Genre</option>
                 {genres && genres.map(genre => {
@@ -107,13 +110,17 @@ const SideBar = () => {
                 name='origin'
                 value={filters.origin}
                 onChange={handleFilterChange}
+                className={style.filterSelect}
             >
                 <option disabled value="default">Filter by Origin</option>
                 <option value="api">Api</option>
                 <option value="created">Created</option>
             </select>
 
-            <button onClick={handleResetFilters}>Reset Filters</button>
+            <button
+                onClick={handleResetFilters}
+                className={style.resetButton}
+            >Reset Filters</button>
         </div>
     )
 }

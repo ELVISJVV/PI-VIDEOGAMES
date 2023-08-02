@@ -1,0 +1,62 @@
+/* Main Navbar container */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #161616;
+    color: white;
+}
+
+/* Logo and Search section */
+.logoSearch {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    margin-right: 1rem;
+}
+
+.search_img {
+    width: 100px;
+    height: auto;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.search_input[type="text"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.navbarButton {
+    padding: 0.5rem 1rem;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+
+}
+
+.navbarButton:hover {
+    background-color: #3e8e41;
+}
+
+/* Buttons section */
+.search_buttons {
+    display: flex;
+    align-items: center;
+}
+
+
+/* Pikachu section */
+.pikachu {
+    margin-left: 1rem;
+}

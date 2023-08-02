@@ -156,8 +156,8 @@ const GameForm = () => {
         </div>
         {errors.platforms && <span className={style.errorMessage}>{errors.platforms}</span>}
       </div>
-            
-      <div>
+              <br />    
+      <div> 
             
         <label className={style.label}>
           Image URL:
