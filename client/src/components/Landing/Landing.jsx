@@ -9,7 +9,7 @@ const Landing = () => {
     <div className={style.backgroundContainer} style={{ backgroundImage: `url(${background})` }}>
       <div className={style.centeredContent}>
         <Link to={`/home`}>
-          <img src={start} alt="start" />
+          <img className={style.img}src={start} alt="start" />
         </Link>
       </div>
     </div>
