@@ -10,7 +10,7 @@ const getVideogamesById = async (id,source) => {
         include: Genre,
     }
     );
-    if (!game) throw new Error('El videojuego no existe');
+    if (!game) throw new Error(`The game doesn't exist`);
     let videogame= [game]
     
     if (source === "api" ){

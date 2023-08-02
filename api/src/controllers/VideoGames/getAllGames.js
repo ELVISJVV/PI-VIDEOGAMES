@@ -5,32 +5,7 @@ const { cleanArray, cleanArrayDatabase } = require('./utils.js');
 const { Videogame, Genre } = require('../../db.js');
 
 
-// unoptimized code
-// const getVideogames = async () => {
-//     let games = [];
-//     let i = 1;
-//     const databaseVideogames = await Videogame.findAll({
-//         include: Genre,
-//     });
 
-//     const databaseVideogamesClean = cleanArrayDatabase(databaseVideogames);
-
-//     while (i <= 5) {
-//         const apiVideogames = (await axios.get(`${BASE_URL}?key=${API_KEY}&page=${i}`)).data.results;
-//         games = [...games, ...apiVideogames]
-//         i++
-//     }
-
-
-
-//     const videogames = cleanArray(games);
-
-//     return [...databaseVideogamesClean, ...videogames]
-
-// }
-
-
-// optimized code
 
 const getVideogames = async () => {
     const totalPages = 5; // Total number of API pages
@@ -51,7 +26,7 @@ const getVideogames = async () => {
             games = [...games, ...response.data.results];
         });
     } catch (error) {
-        console.error('Error al obtener datos de la API:', error);
+        console.error('Error getting data from API:', error);
     }
 
     // Get the games from the database

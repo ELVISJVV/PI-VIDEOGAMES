@@ -21,7 +21,7 @@ const getVideogamesByName = async (name) => {
 
     games = [...databaseVideogames, ...apiVideogames];
 
-    if (games.length === 0) throw new Error('No se encontraron coincidencias');
+    if (games.length === 0) throw new Error('no matches found');
 
     return games.slice(0, 15);
 }

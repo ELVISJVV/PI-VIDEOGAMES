@@ -10,7 +10,7 @@ const postVideogame = async (name, description, platforms, image, released,ratin
         }
     })
 
-    if (repeated) throw new Error('El videojuego ya existe');
+    if (repeated) throw new Error('The game already exists');
 
     const newVideogame = await Videogame.create({
         name,
