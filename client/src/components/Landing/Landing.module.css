@@ -1,0 +1,19 @@
+/* Landing.module.css */
+.backgroundContainer {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Establece el alto mínimo para que el fondo ocupe al menos toda la pantalla */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.centeredContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
