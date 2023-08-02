@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { postVideogame } from '../../redux/actions';
 import { useNavigate } from 'react-router-dom';
-
-import {useEffect} from 'react';  
+import { useEffect } from 'react';
 import { getGenres } from '../../redux/actions';
+import { Link } from 'react-router-dom';
 import validate from './validate';
+import style from './GameForm.module.css';
 
 const GameForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getGenres())
+    dispatch(getGenres());
   }, [dispatch]);
-
 
   const [gameData, setGameData] = useState({
     name: '',
@@ -36,31 +36,23 @@ const GameForm = () => {
     genres: ' ',
   });
 
-
   const genres = useSelector((state) => state.genres);
 
-  const platforms = ['PC', 'PlayStation', 'Xbox', 'Nintendo', 'PSP', 'Wii','Game Boy'];
-
- 
-
+  const platforms = ['PC', 'PlayStation', 'Xbox', 'Nintendo', 'PSP', 'Wii', 'Game Boy'];
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setGameData({ 
+    setGameData({
       ...gameData,
-       [name]: value
-       });
-    setErrors(validate({ 
-      ...gameData, 
-      [name]: value 
+      [name]: value,
+    });
+    setErrors(validate({
+      ...gameData,
+      [name]: value
     }));
   };
 
-
- 
-
   const handleCheckboxChange = (event) => {
-  
     const { name, value, checked } = event.target;
 
     setGameData((prevGameData) => {
@@ -75,10 +67,7 @@ const GameForm = () => {
 
   };
 
-
-  
-  
-  const replaceArrayValuesWithIds = (objectWithArrayProp, nameIdMapping) =>{
+  const replaceArrayValuesWithIds = (objectWithArrayProp, nameIdMapping) => {
     const newArrayProp = objectWithArrayProp.genres.map(name => {
       const matchingIdObject = nameIdMapping.find(item => item.name === name);
       return matchingIdObject ? matchingIdObject.id : name;
@@ -90,24 +79,22 @@ const GameForm = () => {
     };
   }
 
-
-  
   const handleSubmit = (event) => {
     event.preventDefault();
-    
-    const gameDataWithIds =  replaceArrayValuesWithIds(gameData, genres);
+
+    const gameDataWithIds = replaceArrayValuesWithIds(gameData, genres);
     if (Object.keys(errors).length) {
       alert('You must complete the fields correctly');
       return;
     }
     dispatch(postVideogame(gameDataWithIds));
     navigate('/home');
-  
+
   };
 
   const handleRatingChange = (event) => {
     const { value } = event.target;
-    
+
     if (/^\d{0,1}(\.\d{0,2})?$/.test(value) || value === '') {
       setGameData({ ...gameData, rating: value });
     }
@@ -115,129 +102,142 @@ const GameForm = () => {
     setErrors(validate({ ...gameData, rating: value }));
   };
 
-
-
-
   return (
-    <form onSubmit={handleSubmit}>
-
+    <form onSubmit={handleSubmit} className={style.formContainer}>
+      <h1 className={style.title}>Create New Game</h1>
       <div>
-        <label>
+        <label className={style.label}>
           Name:
-          <input 
-          type="text" 
-          name="name" 
-          value={gameData.name}
-           onChange={handleChange} 
-            />
+          <input
+            type="text"
+            name="name"
+            value={gameData.name}
+            onChange={handleChange}
+            className={style.inputField}
+          />
         </label>
-        {errors.name && <span>{errors.name}</span>}
+        {errors.name && <span className={style.errorMessage}>{errors.name}</span>}
       </div>
 
-      <div>
 
-        <label>
+      <div>
+        <label className={style.label}>
           Description:
           <textarea
+
             name="description"
             value={gameData.description}
             onChange={handleChange}
-           
+            className={style.inputField}
           />
         </label>
-        {errors.description && <span>{errors.description}</span>}
-
+        {errors.description && <span className={style.errorMessage}>{errors.description}</span>}
       </div>
 
-     
-      
       <div>
-        <label>
+        <label className={style.label}>
           Platforms:
         </label>
-        <div>
+        <div className={style.platformsContainer}>
+
           {platforms.map((platform) => (
-            <label key={platform}>
+            <label key={platform} className={style.platformLabel}>
               <input
                 type="checkbox"
                 name="platforms"
                 value={platform}
                 checked={gameData.platforms.includes(platform)}
                 onChange={handleCheckboxChange}
+                className={style.platformCheckbox}
               />
               {platform}
             </label>
           ))}
-          {errors.platforms && <span>{errors.platforms}</span>}
         </div>
+        {errors.platforms && <span className={style.errorMessage}>{errors.platforms}</span>}
       </div>
-
+            
       <div>
-        <label>
+            
+        <label className={style.label}>
           Image URL:
-          <input type="url" name="image" value={gameData.image} onChange={handleChange}  />
+          <input
+            type="text"
+            name="image"
+            value={gameData.image}
+            onChange={handleChange}
+            className={style.inputField}
+          />
         </label>
-        {errors.
-        image && <span>{errors.
-        image}</span>}
+        {errors.image && <span className={style.errorMessage}>{errors.image}</span>}
       </div>
 
       <div>
-        <label>
+            
+        <label className={style.label}>
           Released:
           <input
             type="date"
             name="released"
             value={gameData.released}
             onChange={handleChange}
-            
+            className={style.inputField}
           />
         </label>
-        {errors.released && <span>{errors.released}</span>}
+        {errors.released && <span className={style.errorMessage}>{errors.released}</span>}
       </div>
 
       <div>
-        <label>
-          Rating (0-5):
+        <label className={style.label}>
+          Rating:
           <input
-            type="text"  
+            type="text"
             name="rating"
             value={gameData.rating}
             onChange={handleRatingChange}
-           
+            className={style.inputField}
           />
         </label>
-        {errors.rating && <span>{errors.rating}</span>}
+        {errors.rating && <span className={style.errorMessage}>{errors.rating}</span>}
       </div>
 
-     
-        <div>
-          <label>
-            Genres:
-          </label>
-          <div>
-            {genres.map((genre) => (
-              <label key={genre.id}>
-                 <input
-                  type="checkbox"
-                  name="genres"
-                  value={genre.name}
-                  checked={gameData.genres.includes(genre.name)}
-                  onChange={handleCheckboxChange}
-                />
-                {genre.name} 
-                
-              </label>
-            ))}
-            {errors.genres && <span>{errors.genres}</span>}
-          </div>
+      <div>
+        <label className={style.label}>
+          Genres:
+        </label>
+        <div className={style.genresContainer}>
+          {genres.map((genre) => (
+            <label key={genre.id} className={style.genreLabel}>
+              <input
+                type="checkbox"
+                name="genres"
+                value={genre.name}
+                checked={gameData.genres.includes(genre.name)}
+                onChange={handleCheckboxChange}
+                className={style.genreCheckbox}
+              />
+              {genre.name}
+            </label>
+          ))}
         </div>
-        
-      <button type="submit">Create Game</button>
+        {errors.genres && <span className={style.errorMessage}>{errors.genres}</span>}
+      </div>
+
+
+
+      <div className={style.buttonContainer}>
+        <Link to={`/home`}>
+        <button type="button" className={`${style.button} ${style.cancelButton}`}>
+          Cancel
+        </button>
+        </Link>
+        <button type="submit" className={style.button}>
+          Create Game
+        </button>
+      </div>
+
     </form>
   );
 };
 
 export default GameForm;
-
-

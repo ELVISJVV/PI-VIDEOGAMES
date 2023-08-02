@@ -11,12 +11,26 @@
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 9px 14px 8px rgba(10, 10, 10, 0.2);
 }
 
 .card img {
     max-width: 100%;
     height: auto;
+}
+.card button{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.card button:hover{
+    background-color: #3e8e41;
 }
 
 @media (max-width: 768px) {

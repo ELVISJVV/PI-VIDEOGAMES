@@ -31,8 +31,9 @@ const Card = ({ id, name, image, rating, genres }) => {
     <div className={`${style.card} card`}>
       <h1>{name}</h1>
       <img src={image} alt="imagen" />
-      <h3>{rating}</h3>
       <h3>{genres && genres.map((elem) => elem + ' ')}</h3>
+      <h3>⭐ {rating}</h3>
+      <br />
       <Link to={`/detail/${id}`}>
         <button>Read more</button>
       </Link>

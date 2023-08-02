@@ -18,7 +18,6 @@ const Home = () => {
         <div  >
             <Navbar />
             <SideBar />
-        <h1>gohal</h1>
             {
                 loading ? <Loading /> : <PaginatedList /> 
             }

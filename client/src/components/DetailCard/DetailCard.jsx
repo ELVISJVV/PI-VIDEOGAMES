@@ -1,27 +1,42 @@
 import React from 'react'
 import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-
+import style from './DetailCard.module.css'
 
 const DetailCard = () => {
-    
-    const videogameDetail = useSelector(state => state.videogameDetail)
-    // console.log(videogameDetail);
-  return (
-    <div>
-    
-        <h1>{videogameDetail.name}</h1>
-        <img src={videogameDetail.image} alt="img not found"/>
-        
-        <h3>{videogameDetail.rating}</h3>
-        <h3>{videogameDetail.genres}</h3>
-        <h3>{videogameDetail.platforms}</h3>
-        <h3>{videogameDetail.released}</h3>
-          <div dangerouslySetInnerHTML={{ __html: videogameDetail.description }} />
+  const videogameDetail = useSelector(state => state.videogameDetail);
 
-          <Link to={`/home`}><button>Back</button></Link>
+  return (
+    <div className={style.container}>
+      <h1 className={style.title}>{videogameDetail.name}</h1>
+      <img src={videogameDetail.image} alt="Image not found" className={style.image} />
+
+      <div className={style.infoContainer}>
+        <h2 className={style.subtitle}>Rating</h2>
+        <p className={style.rating}>{videogameDetail.rating}</p>
+
+        <h2 className={style.subtitle}>Description</h2>
+        <div className={style.description} dangerouslySetInnerHTML={{ __html: videogameDetail.description }} />
+
+        <h2 className={style.subtitle}>Genres</h2>
+        <p className={style.genres}>
+          {videogameDetail.genres && videogameDetail.genres.map(genre => genre + '  ')}
+        </p>
+
+        <h2 className={style.subtitle}>Platforms</h2>
+        <p className={style.platforms}>
+          {videogameDetail.platforms && videogameDetail.platforms.map(platform => platform + '  ')}
+        </p>
+
+        <h2 className={style.subtitle}>Released</h2>
+        <p className={style.released}>{videogameDetail.released}</p>
+      </div>
+
+      <Link to={`/home`} className={style.backButton}>
+        <button className={style.button}>Back</button>
+      </Link>
     </div>
   )
 }
 
-export default DetailCard
+export default DetailCard;

@@ -1,0 +1,71 @@
+/* DetailCard.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.image {
+    max-width: 80%;
+    height: auto;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.infoContainer {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-top: 15px;
+}
+
+.rating {
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.description {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.genres,
+.platforms {
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+.released {
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+.backButton {
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
