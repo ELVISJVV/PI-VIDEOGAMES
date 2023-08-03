@@ -88,7 +88,7 @@ export const getVideogamesByName = (name) => {
             })
 
         } catch (error) {
-            
+
             dispatch({
                 type: GET_VIDEOGAMES_BY_NAME,
                 payload: []
@@ -104,8 +104,8 @@ export const postVideogame = (videogame) => {
 
     return async (dispatch) => {
         try {
-            const {data} = await axios.post('http://localhost:3001/videogames', videogame);
-            console.log(data);
+
+            const { data } = await axios.post('http://localhost:3001/videogames', videogame);
 
 
             dispatch({
@@ -115,7 +115,6 @@ export const postVideogame = (videogame) => {
             alert('Game created successfully!');
 
         } catch (error) {
-            console.log(error.response.data);
             alert(error.response.data);
             console.error('Error creating the game:', error);
 
