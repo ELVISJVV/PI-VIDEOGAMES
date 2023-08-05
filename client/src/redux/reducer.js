@@ -17,10 +17,7 @@ const initialState = {
     allVideogames: [],
     videogameDetail: {},
     genres: [],
-    videogamesByName: [],
-    videogameCreated: {},
-    
-   
+
 };
 
 
@@ -48,14 +45,12 @@ const reducer = (state = initialState, action) => {
         case GET_VIDEOGAMES_BY_NAME:
             return {
                 ...state,
-                videogames: action.payload,
-                videogamesByName: action.payload
+                videogames: action.payload
             }
 
         case POST_VIDEOGAME:
             return {
-                ...state,
-                videogameCreated: action.payload
+                ...state
             }
 
         case FILTER_BY_GENRE:
