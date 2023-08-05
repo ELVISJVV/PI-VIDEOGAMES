@@ -11,7 +11,7 @@ import {
 import { useEffect, useState } from 'react';
 import style from './SideBar.module.css'
 
-const SideBar = () => {
+const SideBar = ({ currentPage, setCurrentPage }) => {
     const dispatch = useDispatch()
     const defaultFilters = {
         orderBy: 'default',
@@ -30,6 +30,7 @@ const SideBar = () => {
 
 
     const handleFilterChange = (event) => {
+        setCurrentPage(1);
         setFilters(prevFilters => ({
             ...prevFilters,
             [event.target.name]: event.target.value

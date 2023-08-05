@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import Cards from '../Cards/Cards';
-import {  Navbar, SideBar,NotFound } from '../index'
+import { Navbar, SideBar, NotFound } from '../index'
 import style from './PaginatedList.module.css'
 
-const PaginatedList = () => {
+const PaginatedList = ({ currentPage, setCurrentPage }) => {
     const videogames = useSelector(state => state.videogames)
-    
+
     const data = videogames
     const itemsPerPage = 15;
-    const [currentPage, setCurrentPage] = useState(1);
+    // const [currentPage, setCurrentPage] = useState(1);
+
     const totalPages = Math.ceil(data.length / itemsPerPage);
 
     const handleNextPage = () => {
@@ -30,15 +31,15 @@ const PaginatedList = () => {
         return data.slice(startIndex, endIndex);
     };
 
-    if (!data.length) return <NotFound/>;
+    if (!data.length) return <NotFound />;
 
     return (
 
         <div className={style.containerPaginate}>
-            
+
             <div>
-                
-            <Cards videogames={getPaginatedData()} />
+
+                <Cards videogames={getPaginatedData()} />
             </div>
 
             <div className={style.pagination}>

@@ -16,14 +16,14 @@ const Detail = () => {
 
     }, [dispatch, id]);
 
-    
+
 
     return (
         <div>
             {
                 loading ? <Loading /> : <DetailCard />
             }
-            
+
 
         </div>
     )
