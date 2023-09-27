@@ -36,10 +36,8 @@ const createGenres = async (array) => {
             id: genre.id,
             name: genre.name
         }
-        
     })
     )
-   
 
 }
 

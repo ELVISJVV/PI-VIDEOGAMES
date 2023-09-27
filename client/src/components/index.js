@@ -4,7 +4,7 @@ import Loading from './Loading/Loading'
 import PaginatedList from './PaginatedList/PaginatedList'
 import Landing from './Landing/Landing'
 import Navbar from './NavBar/NavBar'
-import SideBar from './SideBar/SideBar' 
+import SideBar from './SideBar/SideBar'
 import NotFound from './NotFound/NotFound'
 import GameForm from './GameForm/GameForm'
 

@@ -1,18 +1,18 @@
-/* body,
+body,
 html {
   margin: 0;
   padding: 0;
   
-} */
+}
 
 * {
   margin: 0;
   padding: 0;
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 }
 
 
-/* #root {
+#root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -53,4 +53,4 @@ html {
 
 .read-the-docs {
   color: #888;
-} */
+}

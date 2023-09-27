@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from "react-redux";
 import Cards from '../Cards/Cards';
-import { Navbar, SideBar, NotFound } from '../index'
+import { NotFound } from '../index'
 import style from './PaginatedList.module.css'
 
 const PaginatedList = ({ currentPage, setCurrentPage }) => {
     const videogames = useSelector(state => state.videogames)
 
     const data = videogames
-    const itemsPerPage = 15;
+    const itemsPerPage = 9;
     // const [currentPage, setCurrentPage] = useState(1);
 
     const totalPages = Math.ceil(data.length / itemsPerPage);

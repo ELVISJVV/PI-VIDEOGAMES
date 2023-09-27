@@ -8,9 +8,8 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.8);
-    /* Adjust the background color and opacity as needed */
-    z-index: 1000;
-    /* Ensure it's above other content */
+    /* z-index: 1000; */
+    
 }
 
 .imgNotFound {

@@ -7,7 +7,6 @@ import style from './Home.module.css'
 const Home = () => {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true);
-
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
@@ -16,10 +15,6 @@ const Home = () => {
     }, [dispatch]);
 
     return (
-
-
-
-
         <div className={style.containerHome}>
             <div className={style.navbar}>
                 <Navbar setCurrentPage={setCurrentPage} />
@@ -34,9 +29,6 @@ const Home = () => {
                 </div>
             </div>
         </div>
-
-
-
     )
 }
 
