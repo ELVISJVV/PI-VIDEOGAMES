@@ -1,13 +1,13 @@
 
-import './App.css'
+// import './App.css'
 import { LandingPage, Home, Detail, NotFound, Create } from './views/index.js'
 import { Route, Routes } from 'react-router-dom';
-
+import './styles/styles.scss'
 
 function App() {
 
   return (
-    <>
+    <div>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
@@ -18,7 +18,7 @@ function App() {
       </Routes>
 
 
-    </>
+    </div>
   )
 }
 

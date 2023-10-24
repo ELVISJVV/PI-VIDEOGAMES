@@ -19,7 +19,7 @@ const Detail = () => {
 
 
     return (
-        <div>
+        <div className='detail'>
             {
                 loading ? <Loading /> : <DetailCard />
             }

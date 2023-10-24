@@ -1,17 +1,26 @@
 
 .containerHome {
-    width: 100%;
-    height: 100%;
     background-color: #000000;
+    padding: 0;
+    margin: 0;
+    /* display: flex; */
 }
 
+/* .navbar{
+    background-color: #000000;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #161616;
+    color: white;
+} */
 
 .content {
     display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
     margin-top: 2rem;
-
 }
 
 .sidebarHome {

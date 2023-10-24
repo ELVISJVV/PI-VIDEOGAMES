@@ -16,17 +16,19 @@ const Home = () => {
 
     return (
         <div className={style.containerHome}>
-            <div className={style.navbar}>
+            {/* <div className={style.navbar}> */}
                 <Navbar setCurrentPage={setCurrentPage} />
-            </div>
+            {/* </div> */}
+
             <div className={style.content}>
                 <div className={style.sidebarHome}>
                     <SideBar currentPage={currentPage} setCurrentPage={setCurrentPage} />
                 </div>
-                <div className={style.paginatedList}>
 
+                <div className={style.paginatedList}>
                     {loading ? <Loading /> : <PaginatedList currentPage={currentPage} setCurrentPage={setCurrentPage} />}
                 </div>
+
             </div>
         </div>
     )
