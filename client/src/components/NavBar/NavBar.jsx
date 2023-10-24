@@ -26,7 +26,7 @@ const Navbar = ({ setCurrentPage }) => {
     }
     return (
 
-        <nav className={style.navbar}>
+        <nav className="navbar">
             <div className={style.logoSearch}>
                 <div className={style.logo}>
                     <Link to={`/`}>
