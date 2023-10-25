@@ -2,7 +2,7 @@
 // import './App.css'
 import { LandingPage, Home, Detail, NotFound, Create } from './views/index.js'
 import { Route, Routes } from 'react-router-dom';
-import './styles/styles.scss'
+
 
 function App() {
 
