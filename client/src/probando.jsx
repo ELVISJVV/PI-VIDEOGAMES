@@ -17,9 +17,6 @@ class ContactForm extends React.Component {
         })
     }
 
-    // Fill in appropriate state properties
-
-
 
     render() {
         return <div>
