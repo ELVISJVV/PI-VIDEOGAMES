@@ -2,6 +2,7 @@
 // import './App.css'
 import { LandingPage, Home, Detail, NotFound, Create } from './views/index.js'
 import { Route, Routes } from 'react-router-dom';
+import ContactForm from './probando.jsx';
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
         <Route path="/create" element={<Create />} />
 
       </Routes>
-
+      {/* <ContactForm /> */}
 
     </div>
   )
